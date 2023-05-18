@@ -1,13 +1,22 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
+  constructor(private userService: UserService) {}
+
   @Get()
   getUsers(): any {
-    return {
-      code: 0,
-      data: [],
-      msg: '请求成功',
-    };
+    return this.userService.getUsers();
+  }
+
+  @Get(':id')
+  getRange(@Param() params: any): any {
+    return this.userService.getRange(parseInt(params.id, 10));
+  }
+
+  @Post()
+  addUsers() {
+    return this.userService.addUsers();
   }
 }
