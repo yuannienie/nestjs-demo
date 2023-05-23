@@ -17,6 +17,7 @@ export class UserController {
       this.configService.get(GlobaleModuleConfig.DB),
       this.configService.get(GlobaleModuleConfig.DB_HOST),
       this.configService.get(GlobaleModuleConfig.USER_NAME),
+      this.configService.get(GlobaleModuleConfig.DB_PORT),
     );
     return this.userService.getUsers();
   }
